@@ -1,47 +1,59 @@
-# Pet-Easy: a visual walkthrough
+# Pet Easy: a visual walkthrough
 
-Current interface preview · **1 October 2026**
+Current interface preview · **8 October 2026**
 
-These captures show the actual React web interface with fictional pets, events and caregiver accounts. They demonstrate the UI; recorded API and native Android checks are described separately in [Verification](VERIFICATION.md).
+These screenshots show the current React website with fictional pets, care events and caregiver accounts. The phone-width images show **responsive web**, not native Android. [Recorded application checks](VERIFICATION.md) are described separately.
 
-## 1. See every pet on one timeline
+## 1. Timeline + next actions
 
-![Shared timeline with pet gradients, date markers and grouped events](assets/timeline.jpg)
+![Light-theme timeline with fictional pets and next actions](assets/timeline.jpg)
 
-Photo and category bubbles share one date axis. Pan through past and upcoming care, change scale, filter pets or event types, and use Today to return to the current date. Overlapping events group at the selected zoom.
+See selected pets on one date axis, then follow the next actions below. Pan through care history, open grouped events, filter pets or categories, and switch between Day, Week, Month and Year. The browser opens the timeline enlarged; it can be collapsed again.
 
-## 2. Expand busy dates without leaving the page
+## 2. A coordinated Graphite theme
 
-![An expanded event group with individual pet and event details](assets/timeline-details.jpg)
+![The same timeline and next actions in Graphite](assets/timeline-dark.jpg)
 
-A group's count includes every event. Opening it reveals a bounded grid; selecting an item shows its details and permitted actions on the same page. This keeps a multi-pet household's history readable as the schedule becomes denser.
+Light and Graphite appearance carry through navigation, forms and dialogs. Pet photos and individual gradient colors stay recognizable in either theme.
 
-## 3. Give each pet a recognizable identity
+## 3. Profiles with a personal identity
 
-![Fictional pet profile with photo, personal details and gradient controls](assets/pet-profile.jpg)
+![Luna's fictional profile with photo, details and gradient presets](assets/pet-profile.jpg)
 
-Profiles combine a cropped photo, age or birthday, weight and a personal color. Twenty-four gradient presets and custom endpoints carry that identity through the timeline. Existing solid colors remain supported.
+Keep a cropped photo, age or birthday, weight and a personal timeline color for each pet. Twenty-four gradient presets and custom colors help distinguish pets at a glance.
 
-## 4. Plan care around completion
+## 4. Care planning and reminders
 
-![Event editor with care details, repeat choices and reminder options](assets/event-planning.jpg)
+![Fictional grooming event with reminder choices and optional repeat](assets/event-planning.jpg)
 
-Record care details, select a provider, choose an optional repeat and set reminder lead times. Repeats count from actual completion. Medical repeats begin unset; owners follow their veterinarian's instructions. Demonstration dates and intervals are fictional.
+Add notes, documents and provider details to an event. Choose reminder preferences and an optional repeat that counts from completion. The example is fictional; medical schedules follow the owner's veterinary instructions. Delivery acceptance is described in the [verification summary](VERIFICATION.md).
 
-## 5. Make shared care deliberate
+## 5. Clear date selection
 
-![Caregiver sharing screen using fictional example addresses](assets/sharing.jpg)
+![Month calendar open in the event editor](assets/calendar.jpg)
 
-Invite someone with View only or View & edit access. Owners manage sharing; caregivers can leave a shared pet. Attributed change history helps everyone follow updates without losing ownership boundaries.
+A month calendar handles dates; smooth time wheels handle the clock. Matching care can reuse deliberately saved reminder preferences for the same pet.
 
-## 6. Keep the timeline usable on a smaller screen
+## 6. Shared care with clear permissions
 
-<img src="assets/timeline-mobile.jpg" alt="Pet-Easy responsive web timeline at phone width" width="390">
+![Caregiver access showing fictional example addresses](assets/sharing.jpg)
 
-This is the **responsive website at phone width**. The native Android application uses Kotlin and Jetpack Compose; its verification is recorded separately. Both clients follow the same product behavior contracts.
+Invite a caregiver with viewing or editing access. Owners manage sharing, caregivers can leave, and attributed history helps everyone follow changes.
+
+## 7. Greek responsive web
+
+<img src="assets/timeline-mobile.jpg" alt="Greek responsive website with a compact timeline and next actions" width="390">
+
+The phone layout keeps Timeline, Pets, Reminders and Map within reach. This preview deliberately collapses the timeline to show more next actions. The native Android app follows the same product behavior with its own Compose interface.
+
+## 8. Help when it is useful
+
+<img src="assets/guidance-mobile.jpg" alt="Optional Greek contextual help above the responsive web timeline" width="390">
+
+Optional first-use guidance connects the first pet, saved event and timeline. Contextual Help remains available, and tips can be dismissed or replayed.
 
 ## Beyond these screens
 
-Provider discovery adds nearest-first results, grouped map pins, Greek/Latin city search and external Google Maps links. Private event documents, data export, reminder snoozes and account controls extend the core journey.
+Provider discovery offers nearby care, map/list results and place search. Documents, account controls, data export and shared history support the wider journey.
 
-Explore the [architecture](ARCHITECTURE.md), [agent-and-skill workflow](AGENT_WORKFLOW.md), or [runnable Python recurrence sample](https://github.com/RagDel/completion-recurrence). Managed cloud deployment and public release are upcoming milestones.
+Explore the [technical overview](ARCHITECTURE.md), [development workflow](AGENT_WORKFLOW.md), or [runnable Python recurrence sample](https://github.com/RagDel/completion-recurrence). Managed cloud deployment and a broader public release are upcoming milestones.

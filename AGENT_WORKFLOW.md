@@ -1,57 +1,52 @@
-# Building Pet-Easy with agents and skills
+# Building Pet Easy with agents and skills
 
-Pet-Easy is an AI-assisted development project directed by **Tilemachos Tragakis**. My work includes defining the product, choosing its technology direction, reviewing the interface and using agents to carry requirements through implementation and verification.
+Pet Easy is an AI-assisted development project directed by **Tilemachos Tragakis**. I define the product, choose its technology direction, review the interface and guide iterations. Codex contributes implementation, research, tests and documentation. This portfolio represents that collaboration; it does not imply that every line was handwritten.
 
-The useful part of working with agents is giving each task a clear purpose, relevant context and an observable result. The project uses written decisions, shared behavior contracts and ten reusable skills to support that process.
+Written decisions, scoped tasks and observable checks keep the work connected to the product. Reusable skills give agents the relevant context and workflow for a particular responsibility.
 
-## Ten skills with distinct responsibilities
+## Scoped skills
 
-| Skill | Responsibility |
+| Area | Responsibility |
 |---|---|
-| Product | User outcomes, scope, priorities and acceptance proposals |
-| UX | Journeys, navigation and interaction states |
-| UI | Visual direction, component presentation and consistency |
-| Architecture | Technical tradeoffs and shared behavior contracts |
-| Django | Backend behavior, services and application permissions |
-| React | Browser components, state and API integration |
-| Kotlin | Native Android behavior, lifecycle and API integration |
-| PostgreSQL | Schema, migrations, constraints and query behavior |
-| Docker | Reproducible builds and container configuration |
-| Verification | Cross-client journeys and integration regressions |
+| Product, UX and UI | Outcomes, scope, journeys, visual direction and interaction review |
+| Architecture | Shared behavior and technical tradeoffs |
+| Django and PostgreSQL | Application behavior, permissions, data changes and persistence |
+| React and Kotlin | Browser and native Android implementation |
+| Docker | Reproducible application builds and local environments |
+| Verification | Cross-client journeys, regressions and evidence boundaries |
 
-These are scoped workflows selected for a task. The skill library combines project-specific guidance with reviewed, attributed adaptations of upstream material. Responsibilities are deliberately narrow: a visual task cannot silently redefine product behavior, and a passing client build cannot establish database correctness.
+These ten project skills are reusable workflows, not a permanent ten-agent team. A task selects the relevant ones. Parallel work has explicit ownership, and shared changes are reviewed together before integration.
 
-## From a product decision to evidence
+## From a decision to a checked result
 
 ```mermaid
 flowchart LR
-    A[Product decision] --> B[Behavior contract]
-    B --> C[Scoped agent tasks]
-    C --> D[Implementation and focused checks]
-    D --> E[Independent review]
-    E --> F[Cross-client verification]
-    F --> G[Integration and updated context]
+    A[Product decision] --> B[Agreed behavior]
+    B --> C[Scoped tasks]
+    C --> D[Implementation]
+    D --> E[Checks and review]
+    E --> F[Integration and updated notes]
     E --> D
 ```
 
-Independent work can run in parallel with clear file ownership. Shared changes are reconciled against the agreed contract. Reviews look for observable failures, compatibility issues and missing evidence; findings become focused follow-up work.
+Durable notes distinguish owner decisions, engineering choices and proposals. This helps a later session continue the work without turning an old suggestion into a requirement. Reviews look for failures a user could encounter, compatibility problems and claims unsupported by the available evidence.
 
-Durable project notes preserve decisions between sessions. They distinguish user choices, engineering selections and proposals, so an agent resuming work does not treat an old suggestion as an approved requirement.
+## Example: timeline, next actions and guidance
 
-## Example: the shared timeline redesign
+The product evolved from separate pet lanes into one shared date axis, then added **Next actions** for planned and overdue care. That decision required more than a new layout:
 
-The product direction changed from separate pet lanes to **one shared date axis**, with actual gradients for pet accents. That visual decision affected several parts of the application:
+1. Define how filters, event groups, completion and selected dates work together.
+2. Implement the agreed behavior in React and native Compose, with layouts appropriate to each platform.
+3. Keep existing records, permissions, calendars and reminder behavior intact.
+4. Exercise narrow screens, dense histories, view-only access, edited drafts and interrupted saves.
+5. Add optional first-use guidance that advances after a successful save and can be skipped or replayed.
 
-1. **Define the interaction.** An isolated event sits above the axis. Two overlapping events alternate above and below. Larger groups show their complete count and expand into an inline grid. Grouping follows the current zoom.
-2. **Keep clients aligned.** React and native Compose implement the same behavior, using a shared set of 24 gradient presets.
-3. **Preserve existing data.** Adding a gradient endpoint keeps older solid colors and older-client updates valid.
-4. **Exercise difficult states.** Check mixed pets and dates, long overlap chains, birthdays, filtering, access changes, small screens and keyboard focus.
-5. **Check the complete journey.** A synthetic profile and event created in the browser were inspected on Android; a gradient saved on Android was then verified in a fresh browser view.
+The later light/Graphite work followed the same pattern: review a visual direction, apply shared conventions, then check real screens and state preservation. Screenshots show the result; application tests and selected device journeys supply different evidence.
 
-This connects a visible product improvement to layout algorithms, API compatibility, persistence and cross-client acceptance. The [verification summary](VERIFICATION.md) records the boundaries of that evidence.
+## What this demonstrates
 
-## What the portfolio demonstrates
+The project demonstrates product direction, scoped delegation, iterative interface review and continuity across a growing application. It also makes the limits visible: a passing build is not device acceptance, and an attractive fixture is not proof of a complete user journey.
 
-The project shows how I turn product requirements into scoped technical work, coordinate specialized agent workflows, review results and maintain continuity across a growing application. Codex contributes implementation, tests, research and documentation; the portfolio does not imply that every line was written manually.
+Public materials include the interface, broad engineering decisions, verification summaries and a [runnable recurrence example](https://github.com/RagDel/completion-recurrence). Implementation source, internal instructions, user records and operational setup remain private.
 
-Public materials include the interface, engineering explanations and a [runnable recurrence example](https://github.com/RagDel/completion-recurrence). Private source, project instructions, user records and operational configuration are outside this showcase.
+[Product walkthrough](WALKTHROUGH.md) · [Architecture](ARCHITECTURE.md) · [Verification](VERIFICATION.md)

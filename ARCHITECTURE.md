@@ -1,68 +1,45 @@
 # Architecture and engineering decisions
 
-Pet-Easy combines a React website and a native Kotlin Android app around shared pet-care records. The engineering challenge is keeping dates, permissions, edits and reminders consistent while each client offers an experience suited to its platform.
+Pet Easy brings a React website and a native Kotlin Android app together around the same pet-care records. The main engineering concern is consistent dates, permissions and edits across clients, while keeping each interface suited to its platform.
 
-This diagram shows logical responsibilities in the implementation. Managed cloud deployment is an upcoming milestone; the diagram does not describe a live hosted service.
+The diagram shows broad responsibilities. Managed cloud deployment and a public release remain upcoming milestones.
 
 ```mermaid
 flowchart TB
-    W[React / TypeScript website] --> A[Django REST API]
+    W[React / TypeScript website] --> A[Django application]
     K[Kotlin / Jetpack Compose Android] --> A
-    G[Shared gradient palette] --> W
-    G --> K
+    S[Shared visual and behavior conventions] --> W
+    S --> K
     A --> P[(PostgreSQL)]
-    A --> F[Profile images and event documents]
-    P --> R[Reminder scheduling and interactions]
-    R --> E[Email integration]
-    R --> N[Android push integration]
-    O[OSM / Overture records] --> I[Import and source attribution]
-    I --> P
-    Z[GeoNames place index] --> A
+    A --> F[Pet photos and care documents]
+    A --> R[Reminder scheduling]
+    D[Source-attributed care directory] --> A
 ```
 
-## A timeline built around actual dates
+## Shared records, platform-specific presentation
 
-All selected pets share one horizontal axis. Events keep their actual date anchors as users pan, zoom and filter. At each scale, the clients identify connected groups of overlapping markers: a single marker sits above the axis, two alternate above and below, and three or more become a counted group. A group can contain several pets and nearby dates.
+React and Compose implement their own navigation, forms and interactions. Shared conventions keep pet accents, light/Graphite colors, event categories and calendar behavior aligned. Greek and English interfaces use the same care records.
 
-Expanding a group reveals a bounded grid with each pet, category and date, followed by details on the same page. Long collision chains keep a reachable group control even when their centre moves outside the visible window. Birthdays participate in grouping without becoming editable care events.
+The current experience pairs a shared timeline with **Next actions**, a list of planned and overdue care. Pet and category filters affect both views. Events remain anchored to their dates; overlapping markers form expandable groups. Day, Week, Month and Year views, a Today shortcut and reversible enlargement support short-term planning and longer histories. The browser opens enlarged; native Android retains its compact initial presentation.
 
-This behavior makes dense histories useful on small screens while preserving individual records. Saving an event focuses it in the timeline; Today recentres the date without changing the user's scale or filters.
+## Product rules that survive a client change
 
-## One visual contract, two client implementations
+Owners choose who can view or edit shared care. Those permissions apply to pets, events and documents across both clients. Concurrent edits and repeated submissions are handled explicitly so a retry does not silently create duplicate work or replace a newer change.
 
-Both clients consume the same 24-gradient preset collection. Pet records store the chosen color values, allowing custom adjustments without depending on a particular preset version. A second color extends the existing solid-color model; older records keep their appearance and older clients can use the first color.
+Repeats count from completion. Calendar intervals and reminder clocks follow the selected timezone rather than treating a month as a fixed number of days. Medical repeats require an owner-selected interval. The application can remember deliberately saved reminder choices for the same pet and type of care, while preserving edits already in progress.
 
-The shared contract defines behavior and data. React and Compose implement their own layouts, navigation and platform interactions. Greek/English presentation, permission states, date semantics and the saved palette are checked across both clients.
+The public [completion-recurrence Python sample](https://github.com/RagDel/completion-recurrence) makes one focused, date-only part of this work runnable.
 
-## Shared care under concurrent changes
+## Discovery and useful context
 
-Owners control invitations and choose viewing or editing access. Caregivers can leave a shared pet without removing the owner's records. The API applies the same rights to profile changes, events and attached documents, and clients clear stale views after access changes.
+The Greece care directory uses attributed OpenStreetMap and Overture records, with place lookup for city and area searches. It covers veterinary practices, groomers, shops and selected other care services. Distance ordering, map movement, category filters and explicit location requests support discovery. Reviewed duplicate grouping improves listings while retaining their source attribution; the directory is not a claim of complete or independently verified business coverage.
 
-Writes carry a record version so conflicting changes are surfaced instead of silently overwriting newer work. Retry identities allow an interrupted create or attachment upload to be repeated without creating another copy. Completing an event creates its successor once, including when requests arrive concurrently. Attributed history connects changes to the care record.
+Optional introduction hints connect Add pet, Save event and the timeline. Contextual Help and replay remain available without forcing a returning user through onboarding. Theme changes preserve drafts and open controls; photos, saved pet gradients and map imagery retain their original appearance.
 
-## Calendar rules that match the product
+## Scope and next milestones
 
-Repeats count from actual completion. A monthly interval follows calendar months, including month-end clamping, rather than assuming every month has the same number of days. Calendar reminders retain their local clock through daylight-saving changes; hourly offsets represent elapsed time. Medical repeats start unselected and use the interval chosen by the owner.
+Account controls include export, session management and an account-deletion cancellation period. Pet-profile recovery is a separate product flow. These capabilities need continued operational and user acceptance work alongside the application itself.
 
-Android snoozes and dismissal follow-ups form a separate reminder interaction flow. The implementation preserves accepted snoozes when callbacks arrive late, handles repeated requests, and stops queued follow-ups when a record is completed or becomes ineligible. Email and Android preferences remain independent.
+Next milestones include managed hosting, wider physical-device and accessibility testing, release distribution and performance evaluation. Professional-care expansion, partner booking, subscriptions and iOS remain future scope.
 
-The public [completion-recurrence Python sample](https://github.com/RagDel/completion-recurrence) makes a focused date-only part of this work runnable. It does not reproduce the complete application's scheduling or notification system.
-
-## Geospatial discovery with traceable sources
-
-Provider search sorts the matching records by distance before pagination. Map movement and selected place results refresh the search; event forms narrow results to relevant services and can reuse the last saved provider for that pet and service.
-
-The Greece directory contains 3,124 source-attributed OpenStreetMap/Overture records. A separate GeoNames index supports Greek/Latin city and area names. Source records retain their identity: nearby entries are not silently treated as one verified business. Map clusters count the results on the current page, and reviews open through external Google Maps links.
-
-## User-facing data controls
-
-Profiles and care events support permission-aware documents and attributed history. Account controls include ZIP export, session management and account deletion with a seven-day cancellation window. Pet-profile deletion has its own recovery flow and is distinguished from account erasure in the product.
-
-## Next engineering milestones
-
-- Managed cloud deployment, production monitoring and hosted acceptance across web and Android.
-- Broader physical-device, accessibility, interrupted-journey and notification power-management testing.
-- Release distribution and performance evaluation against realistic usage.
-- Further professional-care workflows; partner booking, commercial billing and iOS remain future scope.
-
-The [verification summary](VERIFICATION.md) separates implemented behavior, recorded checks and remaining acceptance work. The [agent workflow](AGENT_WORKFLOW.md) explains how scoped skills and review support the development process.
+[Verification and limits](VERIFICATION.md) · [Agent-assisted development](AGENT_WORKFLOW.md)

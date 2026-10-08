@@ -1,59 +1,56 @@
-# Pet-Easy
+# Pet Easy
 
-**One timeline. Every pet. Shared care that stays in sync.**
+**Your pet’s care, simply organised.**
 
-Pet-Easy brings pet profiles, care events, reminders and caregiver collaboration into a connected web and native Android experience. Greek by default, with an English switch.
+A web and native Android app for keeping pet profiles, care events and shared responsibilities in one place. Greek-first, with an English switch and light or Graphite appearance.
 
-A product and engineering case study by **Tilemachos Tragakis**, developed with Codex and scoped AI-agent workflows.
+A product and engineering showcase by **Tilemachos Tragakis**, built with Codex-assisted development.
 
-**React · TypeScript · Django REST Framework · PostgreSQL · Kotlin · Jetpack Compose · Docker**
+![Pet Easy timeline and next actions with fictional pets](assets/timeline.jpg)
 
-![Pet-Easy shared timeline with fictional pets and care events](assets/timeline.jpg)
+[Visual walkthrough](WALKTHROUGH.md) · [Technical overview](ARCHITECTURE.md) · [Development workflow](AGENT_WORKFLOW.md) · [Verification summary](VERIFICATION.md)
 
-[Visual walkthrough](WALKTHROUGH.md) · [Architecture](ARCHITECTURE.md) · [Agents and skills](AGENT_WORKFLOW.md) · [Verification](VERIFICATION.md) · [Runnable Python sample](https://github.com/RagDel/completion-recurrence)
+**Updated 8 October 2026.** The app is in active development and selected-user testing. Managed cloud deployment and a broader public release are future milestones. This repository contains curated product previews and a high-level case study; application source remains private.
 
-**October 2026:** web and Android features are implemented and undergoing iterative verification. Managed cloud deployment and public release are upcoming milestones. This public repository presents the product and engineering; application source remains private.
+## What the app brings together
 
-## The product
-
-Sharing pet care means coordinating more than dates. An owner needs to know what happened, what comes next, who changed a record and what each caregiver can do. Pet-Easy connects these decisions in one place, while remaining useful for someone caring for a pet alone.
-
-| Capability | What the experience offers |
+| Capability | Experience |
 |---|---|
-| **A shared timeline** | One horizontal date axis for every selected pet, circular photo/category markers, pan and zoom, a Today shortcut, and pet/type filters. Crowded events group by overlap and expand in place. |
-| **Profiles with personality** | Cropped photos, optional birthdays, age and kg/lb weight, plus 24 actual gradient presets and custom colors shared across clients. |
-| **Flexible care records** | Vaccines, antiparasitic care, treatment, grooming, food and species-aware supplies. Optional product details, reusable choices, documents and provider contacts stay with the event. |
-| **Caregiver collaboration** | Owner-managed invitations, View only or View & edit access, attributed changes and the ability to leave a shared pet. |
-| **Completion-based planning** | Repeat intervals count from actual completion. Reminder preferences, adjustable times and native Android snooze/dismissal behavior support follow-up. |
-| **Nearby services** | Nearest-first provider results, grouped map pins, city/area search, relevant business categories and external Google Maps links. Initial coverage uses source-attributed open data for Greece. |
-| **Control over records** | Private attachments, data export, session management and distinct pet-profile/account deletion flows with recovery or cancellation periods. |
+| **Timeline + next actions** | See selected pets on one date axis, explore grouped events, and follow a list of upcoming or overdue care. Switch between Day, Week, Month and Year, or return to Today. |
+| **Personal pet profiles** | Cropped photos, birthdays, age, weight and individual gradient colors make each pet easy to recognize. |
+| **Care planning** | Keep notes, documents and provider details with an event. Choose reminder preferences and optional repeats that count from completion. |
+| **Shared care** | Invite a caregiver with viewing or editing access. Owners manage sharing, while a shared history helps everyone follow changes. |
+| **Nearby services** | Explore vets, groomers, pet shops and related care through map/list discovery, place search and distance-based results. The initial directory covers Greece using attributed open data. |
+| **Account and record controls** | Manage profile details, export data, review sessions and use separate pet-profile and account-deletion flows. |
 
-A separate **professional workspace is in development**, covering clients and pets, practice details and reminder planning. Partner bookings, payments and external professional messaging remain future work.
+Medical schedules are chosen by the owner from veterinary instructions; the app does not prescribe treatment or universal repeat intervals.
 
-## Engineering behind the interface
+## The latest experience
 
-| Challenge | Implemented approach |
-|---|---|
-| Many pets and overlapping dates on one screen | Zoom-aware collision groups preserve full event counts and open a bounded detail grid. |
-| The same data on web and Android | A shared API and behavior contracts, with native interfaces and shared visual presets. |
-| Two caregivers change one event | Version-aware updates expose conflicts instead of silently overwriting changes. |
-| A completion request is retried | Retry-safe completion avoids generating duplicate successor events. |
-| A task is completed late | Calendar recurrence starts from completion, with explicit month-end and leap-year behavior. |
-| Access changes while details are open | Clients clear stale views and actions as access changes. |
-| A familiar visual feature evolves | Existing solid pet colors remain valid alongside the new two-stop gradients. |
+- **Light and Graphite themes:** coordinated appearance across the website, account screens and Android, with the approved English brand artwork.
+- **More room for the timeline:** the browser opens it enlarged, with next actions below and controls to collapse or enlarge it again.
+- **Simpler planning controls:** month calendars, smooth time wheels and reminder choices remembered for matching care details.
+- **Optional guidance:** a short introduction and contextual Help support the first pet and event without interrupting regular use.
+- **Native navigation:** Android returns to the timeline before exit and asks before discarding an edited form.
 
-The [architecture case study](ARCHITECTURE.md) explains these decisions. The [standalone recurrence sample](https://github.com/RagDel/completion-recurrence) provides inspectable Python code, a CLI and tests for one scheduling problem from the project.
+![Pet Easy shared timeline in the Graphite theme](assets/timeline-dark.jpg)
 
-## How I build with agents
+Screenshots use the current browser interface and fictional demonstration records. Phone-width previews are labelled **responsive web**, separately from the native Android app.
 
-I own product direction, choose the stack and user-facing behavior, and review the experience. I use Codex agents for focused research, implementation, debugging, verification and documentation, with explicit scope and acceptance criteria.
+## Built across two clients
 
-Ten project-specific skills separate product, UX, UI, architecture, backend, browser, Android, database, containers and integration verification. Shared contracts and recorded decisions connect their work; independent reviews check results before integration. [See the workflow and a concrete feature example.](AGENT_WORKFLOW.md)
+**React / TypeScript · Kotlin / Jetpack Compose · Django · PostgreSQL · Docker**
 
-## Evidence and next steps
+The website and Android app share product behavior and data through one backend. Engineering work covers consistent dates and permissions, reliable handling of repeated actions, shared-care edits, and coordinated appearance across two distinct interfaces.
 
-Recorded checks include PostgreSQL integration tests, responsive Greek/English browser journeys, Android JVM tests and lint, and selected browser-to-Android persistence checks. The visual walkthrough uses the current web interface and fictional demonstration data. Narrow-screen web captures are labelled as web, and are separate from native Android evidence.
+The [technical overview](ARCHITECTURE.md) explains these responsibilities at a high level. A separate [runnable Python recurrence example](https://github.com/RagDel/completion-recurrence) demonstrates one focused scheduling problem with tests.
 
-Next milestones are **managed cloud deployment**, release distribution, monitoring, broader physical-device and accessibility testing, and expanded professional workflows. Notification integration and development delivery checks do not establish production delivery reliability. [Verification scope and remaining work](VERIFICATION.md).
+## My role and development process
 
-Published for portfolio review. No open-source reuse license has been selected for the case-study materials, branding or private application.
+I set the product direction, choose user-facing behavior and technical priorities, and review the experience. I use Codex agents for scoped implementation, research, debugging and verification, supported by reusable project skills and recorded decisions. [How the workflow fits together](AGENT_WORKFLOW.md).
+
+Recorded checks include database-backed behavior, responsive Greek/English browser journeys, Android builds and selected cross-client/device flows. The [verification summary](VERIFICATION.md) distinguishes those checks from screenshots and remaining acceptance work.
+
+Next work includes broader device and accessibility testing, delivery reliability, release distribution and managed hosting. Professional workflows remain exploratory; booking, payments and wider commercial features are future scope.
+
+Published for portfolio review. No open-source reuse license has been selected for these case-study materials, branding or the private application.
