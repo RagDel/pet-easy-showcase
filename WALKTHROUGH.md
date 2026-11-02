@@ -1,6 +1,13 @@
 # Pet Easy: a visual walkthrough
 
-Current interface preview · **8 October 2026**
+Video previews · **2 November 2026**
+
+- [Website demo — 60 seconds, landscape MP4](assets/demos/Pet-Easy-website-demo.mp4?raw=true)
+- [Native Android demo — 59 seconds, portrait MP4](assets/demos/Pet-Easy-mobile-demo.mp4?raw=true)
+
+The silent English videos use fictional data and staged sign-in/future-domain visuals. Apple sign-in and iOS are labelled work in progress. See the [demo notes](README.md#watch-the-demos) for scope.
+
+Screenshot walkthrough · **8 October 2026**
 
 These screenshots show the current React website with fictional pets, care events and caregiver accounts. The phone-width images show **responsive web**, not native Android. [Recorded application checks](VERIFICATION.md) are described separately.
 

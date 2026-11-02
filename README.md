@@ -6,11 +6,22 @@ A web and native Android app for keeping pet profiles, care events and shared re
 
 A product and engineering showcase by **Tilemachos Tragakis**, built with Codex-assisted development.
 
+## Watch the demos
+
+Many pets, past care and future plans in one timeline. Two short previews show quick planning with less typing, remembered reminder preferences, map discovery, shared care and device/Google Calendar connections.
+
+| Website | Native Android |
+|---|---|
+| [Watch / download the website demo](assets/demos/Pet-Easy-website-demo.mp4?raw=true) | [Watch / download the mobile demo](assets/demos/Pet-Easy-mobile-demo.mp4?raw=true) |
+| 60 seconds · 1920 × 1080 · MP4 | 59 seconds · 1080 × 1920 · MP4 |
+
+Recorded **2 November 2026**. Both demos are silent English previews with fictional pets, caregivers, businesses and Calendar account state. Sign-in and the future **pet-easy.com** domain are staged preview visuals. Apple sign-in and iOS are marked **Work in progress**; the mobile recording shows native Android.
+
 ![Pet Easy timeline and next actions with fictional pets](assets/timeline.jpg)
 
 [Visual walkthrough](WALKTHROUGH.md) · [Technical overview](ARCHITECTURE.md) · [Development workflow](AGENT_WORKFLOW.md) · [Verification summary](VERIFICATION.md)
 
-**Updated 8 October 2026.** The app is in active development and selected-user testing. Managed cloud deployment and a broader public release are future milestones. This repository contains curated product previews and a high-level case study; application source remains private.
+**Updated 2 November 2026.** The app is in active development and selected-user testing. Managed cloud deployment and a broader public release are future milestones. This repository contains curated product previews and a high-level case study; application source remains private.
 
 ## What the app brings together
 
@@ -35,7 +46,7 @@ Medical schedules are chosen by the owner from veterinary instructions; the app 
 
 ![Pet Easy shared timeline in the Graphite theme](assets/timeline-dark.jpg)
 
-Screenshots use the current browser interface and fictional demonstration records. Phone-width previews are labelled **responsive web**, separately from the native Android app.
+The screenshots were captured on **8 October 2026** using the browser interface and fictional demonstration records. Phone-width screenshots are labelled **responsive web**, separately from the native Android video above.
 
 ## Built across two clients
 
